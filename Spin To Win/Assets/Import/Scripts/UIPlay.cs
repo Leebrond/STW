@@ -81,4 +81,5 @@ public class UIPlay : MonoBehaviour {
         btnDecBet.interactable = true;
     }
 	
+    
 }

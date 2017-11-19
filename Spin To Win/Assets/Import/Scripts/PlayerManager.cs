@@ -6,7 +6,11 @@ public class PlayerManager : MonoBehaviour {
 
     public static PlayerManager instance;
 
-    public int amountCoin = 1000;
+    public string playerName;
+
+    public bool isLogin;
+
+    public int amountCoin;
 
     void Awake()
     {
@@ -19,9 +23,6 @@ public class PlayerManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-
-
 
     // Update is called once per frame
     void Update () {

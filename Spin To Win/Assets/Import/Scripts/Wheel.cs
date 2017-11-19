@@ -128,7 +128,9 @@ public class Wheel : MonoBehaviour
     {
         for(int i = 0; i<countPrizes; i++)
         {
-            if(-i * degreePrize == startAngle)
+            float a = -i * degreePrize;
+
+            if( a == startAngle)
             {
                 PlayerManager.instance.amountCoin += (prize.timesPrize[i] * uiPlay.chosenBet);
                 uiPlay.txtamountCoin.text = PlayerManager.instance.amountCoin.ToString();
