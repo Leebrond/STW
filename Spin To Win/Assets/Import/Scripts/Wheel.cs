@@ -33,7 +33,6 @@ public class Wheel : MonoBehaviour
 
     private float arrowSpeed;
     
-
     
 
     void Awake()
@@ -66,7 +65,6 @@ public class Wheel : MonoBehaviour
             spinAngle[i] = a;
             a += degreePrize;
         }
-
 
         FindObjectOfType<Prize>().SetPrize();
     }

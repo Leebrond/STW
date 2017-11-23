@@ -47,7 +47,7 @@ public class Home : MonoBehaviour {
             return;
         }
 
-        DB.instance.Login(inputUsername.text, inputPassword.text);
+     //   DB.instance.Login(inputUsername.text, inputPassword.text);
     }
 
     
