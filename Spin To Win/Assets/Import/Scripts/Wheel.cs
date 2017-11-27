@@ -11,9 +11,9 @@ public class Wheel : MonoBehaviour
 {
     public static Wheel instance;
 
-    public int countPrizes = 24;
+   // public int countPrizes = 24;
 
-    public float degreePrize;
+    //public float degreePrize;
 
     public float[] spinAngle;
 
@@ -49,21 +49,18 @@ public class Wheel : MonoBehaviour
 
     void Start()
     {
-        // mainSound = this.GetComponent<AudioSource>();
+        GetComponent<Image>().sprite = GameConfig.instance.spWheel;
 
         prize = GetComponent<Prize>();
 
-        spinAngle = new float[countPrizes];
-
-        degreePrize = 360 / countPrizes;
-
+        spinAngle = new float[GameConfig.instance.countPrizes];
         float a = 0;
 
-        for (int i = 0; i < countPrizes; i++)
+        for (int i = 0; i < GameConfig.instance.countPrizes; i++)
         {
             //Debug.Log(a);
             spinAngle[i] = a;
-            a += degreePrize;
+            a += GameConfig.instance.degreePrize;
         }
 
         FindObjectOfType<Prize>().SetPrize();
@@ -124,15 +121,16 @@ public class Wheel : MonoBehaviour
 
     private void GiveAward()
     {
-        for(int i = 0; i<countPrizes; i++)
+        for(int i = 0; i<GameConfig.instance.countPrizes; i++)
         {
-            float a = -i * degreePrize;
+            float a = -i * GameConfig.instance.degreePrize;
 
             if( a == startAngle)
             {
-                PlayerManager.instance.amountCoin += (prize.timesPrize[i] * uiPlay.chosenBet);
+                PlayerManager.instance.amountCoin += (GameConfig.instance.timesPrize[i] * uiPlay.chosenBet);
                 uiPlay.txtamountCoin.text = PlayerManager.instance.amountCoin.ToString();
                 Debug.Log(i);
+                return;
             }
         }
 

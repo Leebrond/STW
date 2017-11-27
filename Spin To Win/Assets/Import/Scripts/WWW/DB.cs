@@ -23,13 +23,5 @@ public class DB : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-    
-
-
-   
-    
-
 }
     

@@ -21,8 +21,6 @@ public class WWWGameType : MonoBehaviour {
 	}
 
     
-    
-
     private IEnumerator GetWheelTypes()
     {
         WWW www = new WWW(DB.instance.URL + "length.php");
@@ -40,7 +38,8 @@ public class WWWGameType : MonoBehaviour {
         for (int i = 0; i < wheelType.Length; i++)
         {
             wheelType[i] = Instantiate(prefType, transform.position, Quaternion.identity, tfType);
-            //wheelType[i].transform.GetChild(0).GetComponent<Text>().text = name[i];
+            wheelType[i].GetComponent<GameType>().row = i;
+            
 
             if (i == wheelType.Length - 1)
             {
@@ -54,8 +53,6 @@ public class WWWGameType : MonoBehaviour {
             }
             
         }
-
-
     }
 
 

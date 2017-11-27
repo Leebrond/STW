@@ -24,8 +24,11 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+        if(Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            Debug.Log("Internet not reachable");
+        }
+    }
 }
