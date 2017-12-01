@@ -15,10 +15,22 @@ public class WWWGameType : MonoBehaviour {
 
     
 
-	// Use this for initialization
 	void Start () {
         StartCoroutine(GetWheelTypes());
+        
 	}
+
+    
+    
+    private void SetTypeWidth(int count)
+    {
+        if(count != 0)
+        {
+            float contentWidth = tfType.GetChild(0).GetComponent<RectTransform>().sizeDelta.x;
+            float typesWidth = (count * contentWidth) + (count * 65f);
+            tfType.GetComponent<RectTransform>().sizeDelta = new Vector2(typesWidth, 100f);
+        }
+    }
 
     
     private IEnumerator GetWheelTypes()
@@ -31,18 +43,21 @@ public class WWWGameType : MonoBehaviour {
 
         int length = int.Parse(www.text);
 
-        wheelType = new GameObject[length];
+        
 
-        tfType.GetComponent<RectTransform>().sizeDelta = new Vector2((length * 600f) + 150f, 100f);
+        wheelType = new GameObject[length];
+        
+
+       // tfType.GetComponent<RectTransform>().sizeDelta = new Vector2((length * 600f) + 150f, 100f);
 
         for (int i = 0; i < wheelType.Length; i++)
         {
             wheelType[i] = Instantiate(prefType, transform.position, Quaternion.identity, tfType);
             wheelType[i].GetComponent<GameType>().row = i;
-            
 
             if (i == wheelType.Length - 1)
             {
+                SetTypeWidth(length);
                 yield return StartCoroutine(GetPic(i));
                 yield return StartCoroutine(GetName());
                 panelLoading.SetActive(false);
@@ -51,8 +66,8 @@ public class WWWGameType : MonoBehaviour {
             {
                 StartCoroutine(GetPic(i));
             }
-            
         }
+        
     }
 
 

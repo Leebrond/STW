@@ -10,10 +10,9 @@ public class GameConfig : MonoBehaviour {
 
     public int countPrizes;
 
-    public float degreePrize;
+    public int degreePrize;
 
     public int[] timesPrize;
-
     
 
     void Awake()
@@ -52,7 +51,5 @@ public class GameConfig : MonoBehaviour {
         Texture2D texture = new Texture2D(5, 5);
         data.LoadImageIntoTexture(texture);
         spWheel = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2);
-
-        
     }
 }

@@ -12,20 +12,20 @@ public class GameType : MonoBehaviour {
 
     private GameObject menuLoading;
 
-	// Use this for initialization
-	void Start () {
+
+    void Start () {
         btnPlay = transform.Find("Button").GetComponent<Button>();
         btnPlay.onClick.AddListener(PlayGameType);
-
         menuLoading = GameObject.Find("Loading");
 	}
+
 
     public void PlayGameType()
     {
         menuLoading.SetActive(true);
-
         StartCoroutine(WaitGetConfig());
     }
+
 
     IEnumerator WaitGetConfig()
     {

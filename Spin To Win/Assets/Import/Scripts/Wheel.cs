@@ -32,8 +32,6 @@ public class Wheel : MonoBehaviour
     private float currentLerpRotationTime;
 
     private float arrowSpeed;
-    
-    
 
     void Awake()
     {
@@ -58,7 +56,6 @@ public class Wheel : MonoBehaviour
 
         for (int i = 0; i < GameConfig.instance.countPrizes; i++)
         {
-            //Debug.Log(a);
             spinAngle[i] = a;
             a += GameConfig.instance.degreePrize;
         }
@@ -92,18 +89,13 @@ public class Wheel : MonoBehaviour
             if (currentLerpRotationTime > maxLerpRotationTime || this.transform.eulerAngles.z == finishAngle)
             {
                 currentLerpRotationTime = maxLerpRotationTime;
-
-                //mainSound.PlayOneShot(mainSound.clip);
-
+                
                 isSpinning = false;
 
                 startAngle = finishAngle % 360;
                 Debug.Log("Start Angle : " + startAngle);
 
-                //  GiveAwardByAngle();
                 GiveAward();
-
-                uiPlay.EnableButton();
                
             }
 
@@ -121,81 +113,27 @@ public class Wheel : MonoBehaviour
 
     private void GiveAward()
     {
+        int angleZ = (int)transform.eulerAngles.z;
+
+       // Debug.Log("Angle Z : " + angleZ);
+
         for(int i = 0; i<GameConfig.instance.countPrizes; i++)
         {
-            float a = -i * GameConfig.instance.degreePrize;
-
-            if( a == startAngle)
+            int a = i * GameConfig.instance.degreePrize;
+            if( a == angleZ)
             {
                 PlayerManager.instance.amountCoin += (GameConfig.instance.timesPrize[i] * uiPlay.chosenBet);
                 uiPlay.txtamountCoin.text = PlayerManager.instance.amountCoin.ToString();
                 Debug.Log(i);
+                uiPlay.EnableButton();
                 return;
             }
         }
-
     }
-
-
-    private void RewardCoins(int coins)
-    {
-        Debug.Log("Win : " + coins.ToString() + " coins");
-    }
-
-
-   /* private void GiveAwardByAngle()
-    {
-        // Here you can set up rewards for every sector of wheel
-        switch ((int)startAngle)
-        {
-            case 0:
-                RewardCoins(1000);
-                break;
-            case -330:
-                RewardCoins(200);
-                break;
-            case -300:
-                RewardCoins(100);
-                break;
-            case -270:
-                RewardCoins(500);
-                break;
-            case -240:
-                RewardCoins(300);
-                break;
-            case -210:
-                RewardCoins(100);
-                break;
-            case -180:
-                RewardCoins(900);
-                break;
-            case -150:
-                RewardCoins(200);
-                break;
-            case -120:
-                RewardCoins(100);
-                break;
-            case -90:
-                RewardCoins(700);
-                break;
-            case -60:
-                RewardCoins(300);
-                break;
-            case -30:
-                RewardCoins(100);
-                break;
-            default:
-                RewardCoins(300);
-                break;
-        }
-    } */
-
-   
 
 
     public void SpinWheel()
     {
-
         uiPlay.DisableButton();
 
         currentLerpRotationTime = 0f;
@@ -209,7 +147,7 @@ public class Wheel : MonoBehaviour
         Debug.Log(randomFinishAngle);
 
         finishAngle = -(fullCircle * 360 + randomFinishAngle);
-        Debug.Log("Finish Angle : " + finishAngle);
+       // Debug.Log("Finish Angle : " + finishAngle);
         isSpinning = true;
     }
 

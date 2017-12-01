@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Prize : MonoBehaviour {
 
-    public int[] timesPrize;
-
     public GameObject prefPrize;
 
     public Text[] txtPrize;
@@ -30,7 +28,7 @@ public class Prize : MonoBehaviour {
         {
             temp = Instantiate(prefPrize, transform.position, Quaternion.identity, tfPrize);
             temp.transform.localEulerAngles = new Vector3(0, 0, startAngle);
-            temp.GetComponent<Text>().text = timesPrize[i].ToString();
+            temp.GetComponent<Text>().text = GameConfig.instance.timesPrize[i].ToString();
             temp.name = startAngle.ToString();
             txtPrize[i] = temp.GetComponent<Text>();
             startAngle -= GameConfig.instance.degreePrize;

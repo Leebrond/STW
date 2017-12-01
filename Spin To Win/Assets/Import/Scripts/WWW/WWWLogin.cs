@@ -16,16 +16,36 @@ public class WWWLogin : MonoBehaviour {
     public Text txtInfo;
 
     
+    void Start()
+    {
+        if (PlayerManager.instance.isLogin)
+        {
+            panelLogin.SetActive(false);
+            panelLobby.SetActive(true);
+        }
+    }
+    
 
     public void Login()
     {
         if (string.IsNullOrEmpty(inputUsername.text) || string.IsNullOrEmpty(inputPassword.text))
         {
             txtInfo.text = "Input username and password ";
-           // return;
+          // LoginWithoutPassword();
+           return;
         }
 
         StartCoroutine(GetPlayerData());
+    }
+
+
+    private void LoginWithoutPassword()
+    {
+        PlayerManager.instance.amountCoin = 1000;
+        PlayerManager.instance.playerName = "anonymous";
+        panelLobby.SetActive(true);
+        panelLogin.SetActive(false);
+        
     }
 
 
@@ -49,8 +69,8 @@ public class WWWLogin : MonoBehaviour {
         {
             panelLobby.SetActive(true);
             panelLogin.SetActive(false);
+            PlayerManager.instance.amountCoin = int.Parse(temp[1]);
+            PlayerManager.instance.isLogin = true;
         }
-
-        PlayerManager.instance.amountCoin = int.Parse(temp[1]);
     }
 }
