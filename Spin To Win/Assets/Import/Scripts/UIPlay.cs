@@ -23,11 +23,16 @@ public class UIPlay : MonoBehaviour {
 
     public int chosenBet;
 
+    public Slider sliderSpeed;
+
     private int index;
 
 
+    
+
 	// Use this for initialization
 	void Start () {
+        
         index = 0;
         chosenBet = valueBet[index];
         txtamountBet.text = chosenBet.ToString();
@@ -72,6 +77,9 @@ public class UIPlay : MonoBehaviour {
         btnSpin.interactable = false;
         btnIncBet.interactable = false;
         btnDecBet.interactable = false;
+        sliderSpeed.interactable = false;
+
+      
     }
 
     public void EnableButton()
@@ -79,7 +87,20 @@ public class UIPlay : MonoBehaviour {
         btnSpin.interactable = true;
         btnIncBet.interactable = true;
         btnDecBet.interactable = true;
+        sliderSpeed.interactable = true;
     }
-	
+
     
+
+    public void SetSliderValue(float sliderValue)
+    {
+        Wheel.instance.maxLerpRotationTime = sliderValue;
+
+        float limit = sliderValue / (float)(Wheel.instance.checkSpeed.Length + 1);
+
+        Wheel.instance.checkSpeed[0] = limit + (limit / 2f);
+        Wheel.instance.checkSpeed[1] = (limit*2f) + (limit / 3f);
+        Wheel.instance.checkSpeed[2] = (limit*3f) + (limit / 4f);
+    }
+
 }

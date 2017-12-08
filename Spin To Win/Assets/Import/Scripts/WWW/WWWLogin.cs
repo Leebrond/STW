@@ -15,6 +15,7 @@ public class WWWLogin : MonoBehaviour {
 
     public Text txtInfo;
 
+
     
     void Start()
     {
@@ -28,12 +29,12 @@ public class WWWLogin : MonoBehaviour {
 
     public void Login()
     {
-        if (string.IsNullOrEmpty(inputUsername.text) || string.IsNullOrEmpty(inputPassword.text))
+       /* if (string.IsNullOrEmpty(inputUsername.text) || string.IsNullOrEmpty(inputPassword.text))
         {
             txtInfo.text = "Input username and password ";
           // LoginWithoutPassword();
            return;
-        }
+        } */
 
         StartCoroutine(GetPlayerData());
     }
@@ -68,7 +69,7 @@ public class WWWLogin : MonoBehaviour {
         if (temp[0] == "\nLogin success ")
         {
             panelLobby.SetActive(true);
-            panelLogin.SetActive(false);
+            //panelLogin.SetActive(false);
             PlayerManager.instance.amountCoin = int.Parse(temp[1]);
             PlayerManager.instance.isLogin = true;
         }

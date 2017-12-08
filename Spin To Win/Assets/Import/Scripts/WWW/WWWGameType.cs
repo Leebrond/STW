@@ -13,14 +13,29 @@ public class WWWGameType : MonoBehaviour {
 
     public GameObject panelLoading;
 
+   
     
 
 	void Start () {
-        StartCoroutine(GetWheelTypes());
-        
-	}
+        StartCoroutine(WaitData());
+    }
 
-    
+   
+    public IEnumerator WaitData()
+    {
+        panelLoading.SetActive(true);
+
+        yield return StartCoroutine(GetWheelTypes());
+
+        panelLoading.SetActive(false);
+
+        while (!PlayerManager.instance.isLogin)
+        {
+            yield return 0;
+        }
+
+        this.gameObject.SetActive(false);
+    }
     
     private void SetTypeWidth(int count)
     {
@@ -60,14 +75,12 @@ public class WWWGameType : MonoBehaviour {
                 SetTypeWidth(length);
                 yield return StartCoroutine(GetPic(i));
                 yield return StartCoroutine(GetName());
-                panelLoading.SetActive(false);
             }
             else
             {
                 StartCoroutine(GetPic(i));
             }
         }
-        
     }
 
 
@@ -104,7 +117,7 @@ public class WWWGameType : MonoBehaviour {
 
         for(int i = 0; i<wheelType.Length; i++)
         {
-            wheelType[i].transform.GetChild(0).GetComponent<Text>().text = name[i];
+            wheelType[i].transform.GetChild(1).GetComponent<Text>().text = name[i];
         }
     }
 }

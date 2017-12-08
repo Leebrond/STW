@@ -22,7 +22,7 @@ public class GameType : MonoBehaviour {
 
     public void PlayGameType()
     {
-        menuLoading.SetActive(true);
+       // menuLoading.SetActive(true);
         StartCoroutine(WaitGetConfig());
     }
 

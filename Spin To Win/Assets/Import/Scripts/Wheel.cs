@@ -19,6 +19,8 @@ public class Wheel : MonoBehaviour
 
     public UIPlay uiPlay;
 
+    public float[] checkSpeed;
+
     private Prize prize;
     
     private bool isSpinning;
@@ -27,11 +29,15 @@ public class Wheel : MonoBehaviour
 
     private float finishAngle;
     
-    private float maxLerpRotationTime;
+    public float maxLerpRotationTime;
 
     private float currentLerpRotationTime;
 
     private float arrowSpeed;
+
+    
+
+
 
     void Awake()
     {
@@ -47,6 +53,8 @@ public class Wheel : MonoBehaviour
 
     void Start()
     {
+        uiPlay.SetSliderValue(uiPlay.sliderSpeed.value);
+
         GetComponent<Image>().sprite = GameConfig.instance.spWheel;
 
         prize = GetComponent<Prize>();
@@ -63,20 +71,21 @@ public class Wheel : MonoBehaviour
         FindObjectOfType<Prize>().SetPrize();
     }
 
+    
 
     void FixedUpdate()
     {
         if (isSpinning)
         {
-            if (currentLerpRotationTime <= 3f)
+            if (currentLerpRotationTime <= checkSpeed[0])
             {
                 currentLerpRotationTime += Time.deltaTime;
             }
-            else if (currentLerpRotationTime > 3f && currentLerpRotationTime < 5f)
+            else if (currentLerpRotationTime > checkSpeed[0] && currentLerpRotationTime < checkSpeed[1])
             {
                 currentLerpRotationTime += Time.deltaTime / 2.5f;
             }
-            else if (currentLerpRotationTime > 5f && currentLerpRotationTime < 6f)
+            else if (currentLerpRotationTime > checkSpeed[1] && currentLerpRotationTime < checkSpeed[2])
             {
                 currentLerpRotationTime += Time.deltaTime / 4.5f;
             }
@@ -96,7 +105,6 @@ public class Wheel : MonoBehaviour
                 Debug.Log("Start Angle : " + startAngle);
 
                 GiveAward();
-               
             }
 
             float t = currentLerpRotationTime / maxLerpRotationTime;
@@ -115,7 +123,7 @@ public class Wheel : MonoBehaviour
     {
         int angleZ = (int)transform.eulerAngles.z;
 
-       // Debug.Log("Angle Z : " + angleZ);
+       Debug.Log("Angle Z : " + angleZ);
 
         for(int i = 0; i<GameConfig.instance.countPrizes; i++)
         {
@@ -138,7 +146,7 @@ public class Wheel : MonoBehaviour
 
         currentLerpRotationTime = 0f;
 
-        maxLerpRotationTime = 7f;
+        maxLerpRotationTime = uiPlay.sliderSpeed.value;
 
         int fullCircle = 12;
 
@@ -150,8 +158,4 @@ public class Wheel : MonoBehaviour
        // Debug.Log("Finish Angle : " + finishAngle);
         isSpinning = true;
     }
-
-
-
-
 }
