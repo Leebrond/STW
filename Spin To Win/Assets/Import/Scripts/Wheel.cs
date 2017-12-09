@@ -35,7 +35,7 @@ public class Wheel : MonoBehaviour
 
     private float arrowSpeed;
 
-    
+    private float randomFinishAngle;
 
 
 
@@ -104,6 +104,8 @@ public class Wheel : MonoBehaviour
                 startAngle = finishAngle % 360;
                 Debug.Log("Start Angle : " + startAngle);
 
+                Debug.Log("Finish Angle : " + finishAngle);
+
                 GiveAward();
             }
 
@@ -150,7 +152,7 @@ public class Wheel : MonoBehaviour
 
         int fullCircle = 12;
 
-        float randomFinishAngle = spinAngle[UnityEngine.Random.Range(0, spinAngle.Length)];
+        randomFinishAngle = spinAngle[UnityEngine.Random.Range(0, spinAngle.Length)];
 
         Debug.Log(randomFinishAngle);
 

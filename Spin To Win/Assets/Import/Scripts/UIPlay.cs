@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIPlay : MonoBehaviour {
 
@@ -15,8 +16,6 @@ public class UIPlay : MonoBehaviour {
 
 
     [Space]
-    public int[] valueBet;
-
     public Text txtamountBet;
 
     public Text txtamountCoin;
@@ -34,7 +33,7 @@ public class UIPlay : MonoBehaviour {
 	void Start () {
         
         index = 0;
-        chosenBet = valueBet[index];
+        chosenBet = GameConfig.instance.optionBet[index];
         txtamountBet.text = chosenBet.ToString();
         txtamountCoin.text = PlayerManager.instance.amountCoin.ToString();
 
@@ -53,20 +52,20 @@ public class UIPlay : MonoBehaviour {
 
     public void IncreaseBet()
     {
-        if(index>=0 && index < valueBet.Length - 1)
+        if(index>=0 && index < GameConfig.instance.optionBet.Length - 1)
         {
             index++;
-            chosenBet = valueBet[index];
+            chosenBet = GameConfig.instance.optionBet[index];
             txtamountBet.text = chosenBet.ToString();
         }
     }
 
     public void DecreaseBet()
     {
-        if (index > 0 && index < valueBet.Length)
+        if (index > 0 && index < GameConfig.instance.optionBet.Length)
         {
             index--;
-            chosenBet = valueBet[index];
+            chosenBet = GameConfig.instance.optionBet[index];
             txtamountBet.text = chosenBet.ToString();
         }
     }
@@ -103,4 +102,13 @@ public class UIPlay : MonoBehaviour {
         Wheel.instance.checkSpeed[2] = (limit*3f) + (limit / 4f);
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+            PlayerManager.instance.isLogin = false;
+        }
+    }
 }

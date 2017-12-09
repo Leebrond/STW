@@ -22,7 +22,10 @@ public class GameType : MonoBehaviour {
 
     public void PlayGameType()
     {
-       // menuLoading.SetActive(true);
+        menuLoading.GetComponent<Image>().enabled = true;
+        menuLoading.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        menuLoading.transform.GetChild(1).GetComponent<Text>().enabled = true;
+
         StartCoroutine(WaitGetConfig());
     }
 
