@@ -19,22 +19,26 @@ public class WWWLogin : MonoBehaviour {
     
     void Start()
     {
-        if (PlayerManager.instance.isLogin)
+        txtInfo.text = "Welcome";
+       /* if (PlayerManager.instance.isLogin)
         {
             panelLogin.SetActive(false);
             panelLobby.SetActive(true);
-        }
+            GameObject panelLoading = GameObject.Find("Loading");
+            panelLoading.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            panelLoading.transform.GetChild(1).GetComponent<Text>().enabled = false;
+        } */
     }
     
 
     public void Login()
     {
-       /* if (string.IsNullOrEmpty(inputUsername.text) || string.IsNullOrEmpty(inputPassword.text))
+        if (string.IsNullOrEmpty(inputUsername.text) || string.IsNullOrEmpty(inputPassword.text))
         {
             txtInfo.text = "Input username and password ";
           // LoginWithoutPassword();
            return;
-        } */
+        }
 
         StartCoroutine(GetPlayerData());
     }
@@ -53,8 +57,8 @@ public class WWWLogin : MonoBehaviour {
     private IEnumerator GetPlayerData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("usernamePost", "kevin");
-        form.AddField("passwordPost", "kevin");
+        form.AddField("usernamePost", inputUsername.text);
+        form.AddField("passwordPost", inputPassword.text);
 
         WWW www = new WWW(DB.instance.URL + "user.php", form);
 

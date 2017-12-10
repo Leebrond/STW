@@ -23,11 +23,15 @@ public class WWWGameType : MonoBehaviour {
    
     public IEnumerator WaitData()
     {
-        panelLoading.SetActive(true);
+        panelLoading.GetComponent<Image>().enabled = true;
+        panelLoading.transform.GetChild(0).GetComponent<Image>().enabled = true;
+        panelLoading.transform.GetChild(1).GetComponent<Text>().enabled = false;
 
         yield return StartCoroutine(GetWheelTypes());
 
-        panelLoading.SetActive(false);
+        panelLoading.GetComponent<Image>().enabled = false;
+        panelLoading.transform.GetChild(0).GetComponent<Image>().enabled = false;
+        panelLoading.transform.GetChild(1).GetComponent<Text>().enabled = false;
 
         while (!PlayerManager.instance.isLogin)
         {

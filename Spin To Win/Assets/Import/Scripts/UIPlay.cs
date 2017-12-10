@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIPlay : MonoBehaviour {
 
@@ -103,4 +104,13 @@ public class UIPlay : MonoBehaviour {
         Wheel.instance.checkSpeed[2] = (limit*3f) + (limit / 4f);
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+            PlayerManager.instance.isLogin = false;
+        }
+    }
 }
