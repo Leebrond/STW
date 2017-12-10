@@ -75,6 +75,7 @@ public class WWWLogin : MonoBehaviour {
             panelLobby.SetActive(true);
             //panelLogin.SetActive(false);
             PlayerManager.instance.amountCoin = int.Parse(temp[1]);
+            PlayerManager.instance.playerName = temp[2];
             PlayerManager.instance.isLogin = true;
         }
     }

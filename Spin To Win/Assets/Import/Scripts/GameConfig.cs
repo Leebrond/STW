@@ -13,6 +13,8 @@ public class GameConfig : MonoBehaviour {
     public int degreePrize;
 
     public int[] timesPrize;
+
+    public int[] optionBet;
     
 
     void Awake()
@@ -35,14 +37,26 @@ public class GameConfig : MonoBehaviour {
         countPrizes = int.Parse(temp[0]);
         degreePrize = 360 / countPrizes;
 
+        //setPrize
         string[] tempPrize = temp[1].Split(',');
 
         timesPrize = new int[tempPrize.Length];
 
-        for(int i = 0; i<tempPrize.Length; i++)
+        for (int i = 0; i < tempPrize.Length; i++)
         {
             timesPrize[i] = int.Parse(tempPrize[i]);
         }
+
+        //setBet
+        string[] tempBet = temp[2].Split(',');
+
+        optionBet = new int[tempBet.Length];
+
+        for (int i = 0; i < tempBet.Length; i++)
+        {
+            optionBet[i] = int.Parse(tempBet[i]);
+        }
+
     }
 
 
