@@ -1129,9 +1129,14 @@ MonoBehaviour:
   m_FontData:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Font: {fileID: 12800000, guid: 14ce3418caafdce4ea2388e6cf436845, type: 3}
     m_FontSize: 65
 <<<<<<< HEAD
+=======
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+>>>>>>> parent of 5a0a19d... test
 =======
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
@@ -1724,9 +1729,14 @@ MonoBehaviour:
   m_FontData:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Font: {fileID: 12800000, guid: 14ce3418caafdce4ea2388e6cf436845, type: 3}
     m_FontSize: 65
 <<<<<<< HEAD
+=======
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+>>>>>>> parent of 5a0a19d... test
 =======
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
