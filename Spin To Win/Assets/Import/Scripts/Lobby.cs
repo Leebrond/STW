@@ -13,6 +13,8 @@ public class Lobby : MonoBehaviour {
 
     public GameObject menuLogin;
 
+    IEnumerable<RDSobject> rdsContents;
+
 	void Start () {
 
         txtPlayername.text = PlayerManager.instance.playerName;
