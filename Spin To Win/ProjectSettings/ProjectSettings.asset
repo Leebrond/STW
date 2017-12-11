@@ -6,7 +6,7 @@ PlayerSettings:
   serializedVersion: 12
   productGUID: 3d379c51f9c95ef4ebc733be6a113bac
   AndroidProfiler: 0
-  defaultScreenOrientation: 2
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -40,8 +40,7 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_SplashScreenBackgroundLandscape: {fileID: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 8496998217ffedf42aa1df8df4dd2dd2,
-    type: 3}
+  m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -152,7 +151,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
-  ForceInternetPermission: 1
+  ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
