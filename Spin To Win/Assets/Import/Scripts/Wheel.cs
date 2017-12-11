@@ -68,8 +68,7 @@ public class Wheel : MonoBehaviour
             a += GameConfig.instance.degreePrize;
         }
 
-       prize.SetPrize();
-        GetComponent<Point>().SetPoint();
+        FindObjectOfType<Prize>().SetPrize();
     }
 
     
@@ -131,7 +130,7 @@ public class Wheel : MonoBehaviour
         for(int i = 0; i<GameConfig.instance.countPrizes; i++)
         {
             int a = i * GameConfig.instance.degreePrize;
-            if( a == angleZ || a - 1 == angleZ)
+            if( a == angleZ)
             {
                 PlayerManager.instance.amountCoin += (GameConfig.instance.timesPrize[i] * uiPlay.chosenBet);
                 uiPlay.txtamountCoin.text = PlayerManager.instance.amountCoin.ToString();

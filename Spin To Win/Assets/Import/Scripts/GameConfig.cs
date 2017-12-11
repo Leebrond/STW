@@ -30,7 +30,6 @@ public class GameConfig : MonoBehaviour {
         }
     }
 
-
     public void SetConfig(WWW data)
     {
         string[] temp = data.text.Split(';');
@@ -57,6 +56,7 @@ public class GameConfig : MonoBehaviour {
         {
             optionBet[i] = int.Parse(tempBet[i]);
         }
+
     }
 
 
